@@ -56,7 +56,7 @@
   </head>
 <body id="appBody" class="dark bg-dark-bg min-h-screen">
     <!-- Toggle Button (fixed, for demo) -->
-    <div class="fixed top-3 right-3 z-50">
+    <!-- <div class="fixed top-3 right-3 z-50">
       <button
         id="themeToggle"
         onclick="toggleTheme()"
@@ -65,7 +65,7 @@
         <span id="themeIcon">☀️</span>
         <span id="themeLabel">Light Mode</span>
       </button>
-    </div>
+    </div> -->
 
     <!-- ===================== APP SHELL ===================== -->
     <div id="dashboard" class="flex h-screen overflow-hidden">
@@ -205,7 +205,7 @@
                 id="greeting"
                 class="text-white text-xl font-semibold mt-3 flex items-center gap-2"
               >
-                <span>☀️</span> Good morning, Asif!
+                <span>☀️</span> Good morning!
               </p>
             </div>
             <!-- Light/Dark pill (decorative, matches design) -->
@@ -227,7 +227,7 @@
 
           <!-- WEEKLY FORECAST STRIP -->
           <div id="forecastStrip" class="flex gap-3 overflow-x-auto pb-1">
-            <!-- Sun -->
+            Sun
             <div
               class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
             >
@@ -235,7 +235,7 @@
               <p class="theme-muted text-dark-muted text-xs font-medium">Sun</p>
               <p class="theme-text text-white font-bold text-sm">28°</p>
             </div>
-            <!-- Mon -->
+            Mon
             <div
               class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
             >
@@ -243,7 +243,7 @@
               <p class="theme-muted text-dark-muted text-xs font-medium">Mon</p>
               <p class="theme-text text-white font-bold text-sm">17°</p>
             </div>
-            <!-- Tue -->
+            Tue
             <div
               class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
             >
@@ -251,7 +251,7 @@
               <p class="theme-muted text-dark-muted text-xs font-medium">Tue</p>
               <p class="theme-text text-white font-bold text-sm">20°</p>
             </div>
-            <!-- Wed (selected) -->
+            Wed (selected)
             <div
               id="wedCard"
               class="shrink-0 flex flex-col items-center gap-2 rounded-2xl px-5 py-4 min-w-[90px] forecast-selected-dark shadow-lg"
@@ -260,7 +260,7 @@
               <p class="text-white/80 text-xs font-medium">Wed</p>
               <p class="text-white font-bold text-sm">29°</p>
             </div>
-            <!-- Thu -->
+            Thu
             <div
               class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
             >
@@ -268,7 +268,7 @@
               <p class="theme-muted text-dark-muted text-xs font-medium">Thu</p>
               <p class="theme-text text-white font-bold text-sm">22°</p>
             </div>
-            <!-- Fri -->
+            Fri
             <div
               class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
             >
@@ -705,7 +705,7 @@
     </div>
  
     <!-- Location icon btn -->
-    <button class="theme-icon-btn w-9 h-9 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-dark-muted hover:text-white transition-colors">
+    <button title="Use My Location" class="theme-icon-btn w-9 h-9 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-dark-muted hover:text-white transition-colors">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
       </svg>

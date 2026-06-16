@@ -36,7 +36,7 @@ async function fetchWeatherData(city) {
   const weatherData = await fetchAPI(url, "City nhi mili Duabara kro");
 
   if (weatherData) {
-    console.log("Mubaraka Data mil gya he: ", weatherData);
+    console.log("Data mil gya he: ", weatherData);
 
     document.getElementById("cardCity").innerText = weatherData.location.name;
     const localFormattedTime = new Date(weatherData.location.localtime);
@@ -66,5 +66,25 @@ async function fetchWeatherData(city) {
 
     document.getElementById("cardHumidity").innerText =
       weatherData.current.humidity + " %";
+
+    const weeklyForecast = document.getElementById("forecastStrip");
+    weeklyForecast.innerHTML = "";
+
+    weatherData.forecast.forecastday.forEach((eachDay) => {
+      console.log(eachDay);
+
+      const cardHTML = `
+      <div
+              class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
+            >
+            <img src="https:${eachDay.day.condition.icon}" alt="weather icon" class="w-8 h-8">
+              <p class="theme-muted text-dark-muted text-xs font-medium">${eachDay.date}</p>
+              <p class="theme-text text-white font-bold text-sm">MAX: ${eachDay.day.maxtemp_c}</p>
+              <p class="theme-text text-white font-bold text-sm">MIN: ${eachDay.day.mintemp_c}</p>
+            </div>
+      `;
+
+      weeklyForecast.innerHTML += cardHTML;
+    });
   }
 }
