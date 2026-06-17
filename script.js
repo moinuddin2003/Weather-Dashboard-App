@@ -1,3 +1,4 @@
+displayFavourites();
 async function fetchAPI(BASE_URL, customeErrorMessage = "Data load nhi horha") {
   try {
     const response = await fetch(BASE_URL);
@@ -113,18 +114,68 @@ heartBtn.addEventListener("click", () => {
 });
 
 function addToFavourites() {
-  const savedCity = document.getElementById("cardCity").innerText;
+  const cityName = document.getElementById("cardCity").innerText;
 
-  let currentFavourites = localStorage.getItem("savedCity")
-let favouriteArray = currentFavourites ? JSON.parse(currentFavourites) : [];
+  let currentFavourites = localStorage.getItem("favouriteCities");
+  let favouriteArray = currentFavourites ? JSON.parse(currentFavourites) : [];
 
-favouriteArray.push(savedCity)
+  if (favouriteArray.includes(cityName)) {
+    console.log("Already included in favourites");
+    return;
+  }
 
-localStorage.setItem("savedCity" , JSON.stringify(favouriteArray))
+  favouriteArray.push(cityName);
 
-console.log("LocalStorage me ab yeh save ho chuka hai:", favouriteArray);
+  localStorage.setItem("favouriteCities", JSON.stringify(favouriteArray));
 
+  console.log("LocalStorage me ab yeh save ho chuka hai:", favouriteArray);
+
+  displayFavourites();
 }
 
-const favCities = document.getElementById("favCity");
-favCities.innerHTML = "";
+async function displayFavourites() {
+  const favCities = document.getElementById("favCity");
+  favCities.innerHTML = "";
+
+  let currentFavourites = localStorage.getItem("favouriteCities");
+  let favouriteArray = currentFavourites ? JSON.parse(currentFavourites) : [];
+
+  for (const city of favouriteArray) {
+    const url = `${window.CONFIG.BASE_URL}/forecast.json?key=${window.CONFIG.API_KEY}&q=${city}`;
+    const data = await fetchAPI(
+      url,
+      `Favourite cities ${city} are not loading`,
+    );
+    // try {
+    //   const response = await fetch(
+    //     `${window.CONFIG.BASE_URL}/forecast.json?key=${window.CONFIG.API_KEY}&q=${city}`,
+    //   );
+    //   const data = await response.json();
+
+    const cardHTML = `
+      <div onclick="fetchWeatherData('${city}')" class="mx-4 mb-3 rounded-2xl p-4 tokyo-card text-white flex items-center justify-between cursor-pointer">
+          <div class="flex flex-col gap-2 text-sm">
+            <div class="flex items-center gap-3">
+              <span>💨 Wind</span>
+              <div class="w-px h-4 bg-white/30"></div>
+              <span class="font-semibold">${data.current.wind_kph} km/h</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span>💧 Hum</span>
+              <div class="w-px h-4 bg-white/30"></div>
+              <span class="font-semibold">${data.current.humidity} %</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-xs mb-1">${city}</p>
+            <p class="font-display font-bold text-3xl">${data.current.temp_c}°</p>
+          </div>
+        </div>
+      `;
+
+    favCities.innerHTML += cardHTML;
+    // } catch (error) {
+    //   console.log("Fav city load karne me masla aya:", error);
+    // }
+  }
+}
