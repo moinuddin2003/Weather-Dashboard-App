@@ -1,5 +1,5 @@
 displayFavourites();
-
+displaySunriseSunset();
 async function fetchAPI(BASE_URL, customeErrorMessage = "Data load nhi horha") {
   try {
     const response = await fetch(BASE_URL);
@@ -202,6 +202,7 @@ function addToFavourites() {
   console.log("LocalStorage me ab yeh save ho chuka hai:", favouriteArray);
 
   displayFavourites();
+  displaySunriseSunset();
 }
 
 async function displayFavourites() {
@@ -277,4 +278,87 @@ function showToast(title, description, icon, type) {
   setTimeout(() => {
     toastDiv.remove();
   }, 3000);
+}
+
+async function displaySunriseSunset() {
+  const listContainer = document.getElementById("sunriseSunsetList");
+  listContainer.innerHTML = ""; // Purana saaf kiya
+
+  let currentFavourites = localStorage.getItem("favouriteCities");
+  let favouriteArray = currentFavourites ? JSON.parse(currentFavourites) : [];
+
+  // Agar koi favourite city nahi hai to user ko message dikhao
+  if (favouriteArray.length === 0) {
+    listContainer.innerHTML = `<p class="text-xs text-dark-muted text-center py-4">No favourite cities added yet.</p>`;
+    return;
+  }
+
+  // Hum index tracking ke liye simple for loop ya forEach use kar sakte hain
+  for (let i = 0; i < favouriteArray.length; i++) {
+    const city = favouriteArray[i];
+
+    // API Call humare purane fetchAPI wrapper ke zariye
+    const url = `${window.CONFIG.BASE_URL}/forecast.json?key=${window.CONFIG.API_KEY}&q=${city}&days=1`;
+    const data = await fetchAPI(url, `${city} astro data load nahi hua`);
+
+    if (data) {
+      const sunrise = data.forecast.forecastday[0].astro.sunrise;
+      const sunset = data.forecast.forecastday[0].astro.sunset;
+
+      // condition: Agar pehli do cities hain (index 0 aur 1) to EXPANDED layout
+      if (i < 2) {
+        const expandedHTML = `
+          <div class="theme-card2 bg-dark-card2 border border-dark-border rounded-xl p-4 cursor-pointer hover:border-indigo-500 transition-colors" onclick="fetchWeatherData('${city}')">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-1.5 text-white text-sm font-medium">
+                <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                </svg>
+                ${city}
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">☀️</span>
+                <div>
+                  <p class="text-dark-muted text-xs">Sunrise</p>
+                  <p class="text-white font-semibold text-sm">${sunrise}</p>
+                </div>
+              </div>
+              <div class="flex-1 h-px bg-dark-border"></div>
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🌙</span>
+                <div>
+                  <p class="text-dark-muted text-xs">Sunset</p>
+                  <p class="text-white font-semibold text-sm">${sunset}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        listContainer.innerHTML += expandedHTML;
+      }
+      // Else: Baqi saari cities ke liye COMPACT layout (Rows)
+      else {
+        const compactHTML = `
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center justify-between px-1 py-1 cursor-pointer hover:bg-white/5 rounded transition-colors" onclick="fetchWeatherData('${city}')">
+              <div class="flex items-center gap-1.5 text-dark-muted text-xs font-medium">
+                <svg class="w-3 h-3 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                </svg>
+                ${city}
+              </div>
+              <div class="flex items-center gap-3 text-xs">
+                <span class="flex items-center gap-1 text-dark-muted"><span class="text-base">☀️</span> ${sunrise}</span>
+                <span class="flex items-center gap-1 text-dark-muted"><span class="text-base">🌙</span> ${sunset}</span>
+              </div>
+            </div>
+            <div class="h-px bg-dark-border mx-1"></div>
+          </div>
+        `;
+        listContainer.innerHTML += compactHTML;
+      }
+    }
+  }
 }
