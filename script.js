@@ -10,7 +10,7 @@ async function fetchAPI(BASE_URL, customeErrorMessage = "Data load nhi horha") {
     // console.log(data);
     return data;
   } catch (error) {
-    showToast(error.message, "error");
+    showToast("Error!", error.message, "❌", "error");
     console.error(`Error Details: ${error}`);
     return null;
   }
@@ -35,9 +35,16 @@ searchWeather.addEventListener("input", (event) => {
 async function fetchWeatherData(city) {
   const url = `${window.CONFIG.BASE_URL}/forecast.json?key=${window.CONFIG.API_KEY}&q=${city}&days=5&aqi=no&alerts=no`;
 
-  const weatherData = await fetchAPI(url, "City nhi mili Duabara kro");
+  const weatherData = await fetchAPI(url, `"City Not Found"`);
 
   if (weatherData) {
+    showToast(
+      "Data Updated",
+      `${weatherData.location.name} Weather is loading.`,
+      "🌤️",
+      "success",
+    );
+
     console.log("Data mil gya he: ", weatherData);
 
     document.getElementById("cardCity").innerText = weatherData.location.name;
@@ -88,9 +95,8 @@ async function fetchWeatherData(city) {
 
       weeklyForecast.innerHTML += cardHTML;
     });
+    createHourlyChart(weatherData);
   }
-
-  createHourlyChart(weatherData);
 }
 
 let hourlyChart;
@@ -146,11 +152,23 @@ function locationSuccess(position) {
 }
 
 function locationError(error) {
+  showToast(
+    "Access Denied",
+    "Location permission nahi mili. Please check settings.",
+    "❌",
+    "error",
+  );
   console.log("Access Denied");
 }
 
 const locationBtn = document.getElementById("geo-btn");
 locationBtn.addEventListener("click", () => {
+  showToast(
+    "Fetching Location",
+    "Aap ki location maloom ki ja rahi hai...",
+    "🛰️",
+    "info",
+  );
   navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
 });
 
@@ -166,6 +184,12 @@ function addToFavourites() {
   let favouriteArray = currentFavourites ? JSON.parse(currentFavourites) : [];
 
   if (favouriteArray.includes(cityName)) {
+    showToast(
+      "Already Added",
+      `${cityName} Already included in favourites.`,
+      "⚠️",
+      "warning",
+    );
     console.log("Already included in favourites");
     return;
   }
@@ -174,6 +198,7 @@ function addToFavourites() {
 
   localStorage.setItem("favouriteCities", JSON.stringify(favouriteArray));
 
+  showToast("Kamyabi!", `${cityName} added to favourites`, "✅", "success");
   console.log("LocalStorage me ab yeh save ho chuka hai:", favouriteArray);
 
   displayFavourites();
@@ -226,4 +251,30 @@ async function displayFavourites() {
   }
 }
 
+function showToast(title, description, icon, type) {
+  const typeClasses = {
+    success: "bg-green-600 border-green-700 text-white",
+    error: "bg-red-600 border-red-700 text-white",
+    info: "bg-blue-600 border-blue-700 text-white",
+    warning: "bg-amber-500 border-amber-600 text-white",
+  };
 
+  let toastDiv = document.createElement("div");
+
+  toastDiv.className = `p-4 rounded-xl border shadow-lg flex items-start gap-3 transition-all duration-300 transform translate-y-2 ${typeClasses[type]}`;
+
+  toastDiv.innerHTML = `
+    <div class="text-xl">${icon}</div>
+    <div class="flex flex-col gap-0.5">
+      <h4 class="font-bold text-sm">${title}</h4>
+      <p class="text-xs opacity-90">${description}</p>
+    </div>
+  `;
+
+  const container = document.getElementById("toast-container");
+  container.appendChild(toastDiv);
+
+  setTimeout(() => {
+    toastDiv.remove();
+  }, 3000);
+}
