@@ -1,4 +1,5 @@
 displayFavourites();
+
 async function fetchAPI(BASE_URL, customeErrorMessage = "Data load nhi horha") {
   try {
     const response = await fetch(BASE_URL);
@@ -88,8 +89,53 @@ async function fetchWeatherData(city) {
       weeklyForecast.innerHTML += cardHTML;
     });
   }
+
+  createHourlyChart(weatherData);
 }
 
+let hourlyChart;
+
+function createHourlyChart(weatherData) {
+  const ctx = document.getElementById("hourlyChart");
+
+  const temps = weatherData.forecast.forecastday[0].hour.map(
+    (item) => item.temp_c,
+  );
+
+  console.log(temps);
+
+  const hours = weatherData.forecast.forecastday[0].hour.map(
+    (item) => item.time.split(" ")[1],
+  );
+
+  console.log(hours);
+
+  if (hourlyChart) {
+    hourlyChart.destroy();
+  }
+
+  hourlyChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: hours,
+      datasets: [
+        {
+          label: "Temperature °C",
+          data: temps,
+          tension: 0.4,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+    },
+  });
+}
 function locationSuccess(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
@@ -179,3 +225,5 @@ async function displayFavourites() {
     // }
   }
 }
+
+
