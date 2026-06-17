@@ -705,17 +705,18 @@
     </div>
  
     <!-- Location icon btn -->
-    <button title="Use My Location" class="theme-icon-btn w-9 h-9 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-dark-muted hover:text-white transition-colors">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
-      </svg>
-    </button>
+    <button 
+            id="geo-btn" 
+            title="Use My Location"
+            class="absolute right-32 top-9 -translate-y-1/2 text-slate-400 hover:text-blue-400 transition-colors cursor-pointer"
+          >
+            <i class="fa-solid fa-location-crosshairs"></i>
+          </button>
  
     <!-- Bell icon btn -->
-    <button class="theme-icon-btn w-9 h-9 rounded-xl bg-dark-card border border-dark-border flex items-center justify-center text-dark-muted hover:text-white relative transition-colors">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-      </svg>
+    <button id="fav-toggle-btn" class="p-2.5 bg-slate-800 border border-slate-700 rounded-xl hover:text-red-500 transition-colors cursor-pointer">
+          <i class="fa-regular fa-heart text-base"></i>
+        </button>
       <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
     </button>
 
@@ -733,17 +734,22 @@
     class="m-4 rounded-2xl p-5 main-card-dark text-white relative overflow-hidden"
     style="min-height: 280px;"
   >
-    <!-- Decorative sun -->
-    <div class="deco-circle-1"></div>
-    <div class="deco-circle-2"></div>
- 
-    <div class="relative z-10 flex flex-col h-full">
- 
+  <!-- Decorative sun -->
+  <div class="deco-circle-1"></div>
+  <div class="deco-circle-2"></div>
+  
+  <div class="relative z-10 flex flex-col h-full">
+
       <!-- City name + dropdown -->
       <div class="flex items-center gap-1 text-white text-sm font-semibold mb-1">
-        <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
-        </svg>
+        </svg> -->
+        <button title="Add to Favourites" id="heartBtn" class="text-white/65 hover:text-red-500 transition-colors z-20 text-lg cursor-pointer">
+  <i class="fa-regular fa-heart"></i>
+
+        </button>
+
         <span id="cardCity" class="font-medium">Dhaka</span>
         <!-- <svg class="w-3.5 h-3.5 opacity-70 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -787,7 +793,7 @@
     </div>
   </div>
  
-
+      <div id="favCity">  
           <!-- Tokyo Card (pink) -->
           <div
             class="mx-4 mb-3 rounded-2xl p-4 tokyo-card text-white flex items-center justify-between"
@@ -848,7 +854,7 @@
           <div
             class="mx-4 mb-4 rounded-2xl p-4 ny-card text-white flex items-center justify-between border-2 border-dashed border-white/30"
           >
-            <div class="flex flex-col gap-2 text-sm">
+               <div class="flex flex-col gap-2 text-sm">
               <div class="flex items-center gap-3">
                 <div class="flex items-center gap-1.5 text-white/80">
                   <span>💨</span> Wind
@@ -899,6 +905,8 @@
               <p class="font-display font-bold text-3xl">31°</p>
             </div>
           </div>
+      </div>
+
         </div>
         <!-- /right panel -->
       </div>

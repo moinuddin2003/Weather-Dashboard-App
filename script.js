@@ -88,3 +88,43 @@ async function fetchWeatherData(city) {
     });
   }
 }
+
+function locationSuccess(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  console.log(lat, lon);
+
+  fetchWeatherData(`${lat}, ${lon}`);
+}
+
+function locationError(error) {
+  console.log("Access Denied");
+}
+
+const locationBtn = document.getElementById("geo-btn");
+locationBtn.addEventListener("click", () => {
+  navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
+});
+
+const heartBtn = document.getElementById("heartBtn");
+heartBtn.addEventListener("click", () => {
+  addToFavourites();
+});
+
+function addToFavourites() {
+  const savedCity = document.getElementById("cardCity").innerText;
+
+  let currentFavourites = localStorage.getItem("savedCity")
+let favouriteArray = currentFavourites ? JSON.parse(currentFavourites) : [];
+
+favouriteArray.push(savedCity)
+
+localStorage.setItem("savedCity" , JSON.stringify(favouriteArray))
+
+console.log("LocalStorage me ab yeh save ho chuka hai:", favouriteArray);
+
+}
+
+const favCities = document.getElementById("favCity");
+favCities.innerHTML = "";
