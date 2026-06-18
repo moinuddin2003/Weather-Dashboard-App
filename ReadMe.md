@@ -1,4 +1,4 @@
-# Frontend Mentor - Weather Dashboard App Solution
+# Weather Dashboard App — Frontend Development Capstone Project
 
 This is a solution to the **Weather Dashboard App** capstone project assigned during the **Frontend Development Training Program** (HTML, CSS, Bootstrap, Tailwind CSS, JavaScript module).
 
