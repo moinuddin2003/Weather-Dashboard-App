@@ -205,7 +205,7 @@ function addToFavourites() {
 
   favouriteArray.push(cityName);
   localStorage.setItem("favouriteCities", JSON.stringify(favouriteArray));
-  showToast("Kamyabi!", `${cityName} added to favourites`, "✅", "success");
+  showToast("Success!", `${cityName} added to favourites`, "✅", "success");
 
   displayFavourites();
   displaySunriseSunset();
