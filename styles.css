@@ -25,56 +25,6 @@ body {
 }
 
 /* AQI pill colors */
-.aqi-pm2 {
-  background: #4ade80;
-  color: #14532d;
-}
-.aqi-pm10 {
-  background: #facc15;
-  color: #713f12;
-}
-.aqi-so2 {
-  background: #86efac;
-  color: #14532d;
-}
-.aqi-no2 {
-  background: #86efac;
-  color: #14532d;
-}
-.aqi-o3 {
-  background: #4ade80;
-  color: #14532d;
-}
-.aqi-co {
-  background: #f97316;
-  color: #fff;
-}
-
-/* Light mode AQI */
-.light-aqi-pm2 {
-  background: #22c55e;
-  color: #fff;
-}
-.light-aqi-pm10 {
-  background: #eab308;
-  color: #fff;
-}
-.light-aqi-so2 {
-  background: #86efac;
-  color: #14532d;
-}
-.light-aqi-no2 {
-  background: #86efac;
-  color: #14532d;
-}
-.light-aqi-o3 {
-  background: #16a34a;
-  color: #fff;
-}
-.light-aqi-co {
-  background: #ea580c;
-  color: #fff;
-}
 
 /* Rainfall bars */
 .rain-bar {
@@ -121,7 +71,7 @@ body {
 }
 
 /* Light mode overrides */
-.light-bg {
+/* .light-bg {
   background: #f0f2ff;
 }
 .light-sidebar {
@@ -141,7 +91,7 @@ body {
 }
 .light-border {
   border-color: #e5e7eb;
-}
+} */
 .deco-circle-1 {
   position: absolute;
   top: -20px;

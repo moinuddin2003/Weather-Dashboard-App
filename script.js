@@ -381,20 +381,42 @@ function updateDateTime() {
 updateDateTime();
 setInterval(updateDateTime, 1000);
 
+// Theme Toggle Logic
+const lightBtn = document.getElementById("lightBtn");
+const darkBtn = document.getElementById("darkBtn");
+const appBody = document.getElementById("appBody");
 
-// Load saved theme on startup
-if (localStorage.getItem("theme") === "dark") {
-  document.documentElement.classList.add("dark");
-} else {
-  document.documentElement.classList.remove("dark");
+// Button active states ko style karne ke liye helper function
+function updateThemeButtons(isDark) {
+  if (isDark) {
+    darkBtn.classList.add("bg-indigo-600", "text-white");
+    darkBtn.classList.remove("text-dark-muted");
+    lightBtn.classList.remove("bg-white", "text-amber-500", "shadow-sm");
+    lightBtn.classList.add("text-yellow-400");
+  } else {
+    lightBtn.classList.add("bg-white", "text-amber-500", "shadow-sm");
+    lightBtn.classList.remove("text-yellow-400");
+    darkBtn.classList.remove("bg-indigo-600", "text-white");
+    darkBtn.classList.add("text-dark-muted");
+  }
 }
 
 lightBtn.addEventListener("click", () => {
+  // HTML tag se 'dark' class hatao aur Body ka background reset karo
   document.documentElement.classList.remove("dark");
-  localStorage.setItem("theme", "light");
+  appBody.classList.remove("dark", "bg-dark-bg");
+  appBody.classList.add("bg-slate-50", "text-slate-900");
+
+  updateThemeButtons(false);
+  showToast("Theme Changed", "Light mode activated", "☀️", "info");
 });
 
 darkBtn.addEventListener("click", () => {
+  // HTML tag par 'dark' class lagao aur Body ko wapis dark karo
   document.documentElement.classList.add("dark");
-  localStorage.setItem("theme", "dark");
+  appBody.classList.add("dark", "bg-dark-bg");
+  appBody.classList.remove("bg-slate-50", "text-slate-900");
+
+  updateThemeButtons(true);
+  showToast("Theme Changed", "Dark mode activated", "🌙", "info");
 });
