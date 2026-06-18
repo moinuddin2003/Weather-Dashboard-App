@@ -56,90 +56,6 @@
       id="dashboard"
       class="flex flex-col lg:flex-row min-h-screen bg-slate-50 dark:bg-dark-bg transition-colors duration-300"
     >
-      <aside
-        id="sidebar"
-        class="w-full lg:w-16 shrink-0 flex lg:flex-col items-center justify-between lg:justify-start py-4 lg:py-6 px-4 lg:px-0 gap-5 bg-white dark:bg-dark-card border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-dark-border transition-colors duration-300"
-      >
-        <div
-          class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg"
-        >
-          <svg
-            class="w-5 h-5 text-white"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"
-            />
-          </svg>
-        </div>
-
-        <div class="flex md:flex-col gap-3 items-center">
-          <button
-            class="sidebar-icon active w-10 h-10 rounded-xl flex items-center justify-center text-purple-500 dark:text-purple-400 bg-purple-50 dark:bg-slate-800"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              viewBox="0 0 24 24"
-            >
-              <rect x="3" y="3" width="7" height="7" rx="1" />
-              <rect x="14" y="3" width="7" height="7" rx="1" />
-              <rect x="3" y="14" width="7" height="7" rx="1" />
-              <rect x="14" y="14" width="7" height="7" rx="1" />
-            </svg>
-          </button>
-          <button
-            class="sidebar-icon w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 dark:text-dark-muted hover:text-purple-500 dark:hover:text-purple-300"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
-              />
-              <circle cx="12" cy="11" r="3" />
-            </svg>
-          </button>
-          <button
-            class="sidebar-icon w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 dark:text-dark-muted hover:text-purple-500 dark:hover:text-purple-300"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              viewBox="0 0 24 24"
-            >
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-            </svg>
-          </button>
-        </div>
-
-        <button
-          class="sidebar-icon w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 dark:text-dark-muted hover:text-purple-500 dark:hover:text-purple-300 md:mt-auto"
-        >
-          <svg
-            class="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-            />
-            <circle cx="12" cy="12" r="3" />
-          </svg>
-        </button>
-      </aside>
-
       <div class="flex-1 flex flex-col xl:flex-row min-w-0">
         <div class="flex-1 flex flex-col p-4 md:p-6 gap-6 min-w-0">
           <div class="flex items-start justify-between flex-wrap gap-4">
@@ -188,7 +104,7 @@
             </div>
           </div>
 
-          <div>
+          <div class="w-full">
             <h3
               class="text-slate-700 dark:text-white text-sm font-semibold mb-3 transition-colors"
             >
@@ -198,6 +114,58 @@
               id="forecastStrip"
               class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin"
             >
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse transition-colors duration-300"
+              >
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-8 h-8 rounded-full"
+                ></div>
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-10 h-3 rounded"
+                ></div>
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-8 h-4 rounded"
+                ></div>
+              </div>
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse transition-colors duration-300"
+              >
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-8 h-8 rounded-full"
+                ></div>
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-10 h-3 rounded"
+                ></div>
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-8 h-4 rounded"
+                ></div>
+              </div>
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse transition-colors duration-300"
+              >
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-8 h-8 rounded-full"
+                ></div>
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-10 h-3 rounded"
+                ></div>
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-8 h-4 rounded"
+                ></div>
+              </div>
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse transition-colors duration-300"
+              >
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-8 h-8 rounded-full"
+                ></div>
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-10 h-3 rounded"
+                ></div>
+                <div
+                  class="bg-slate-300 dark:bg-slate-700 w-8 h-4 rounded"
+                ></div>
+              </div>
               <div
                 class="theme-card shrink-0 flex flex-col items-center gap-3 bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse transition-colors duration-300"
               >
@@ -305,29 +273,25 @@
             class="flex items-center gap-3 p-4 border-b border-slate-200 dark:border-dark-border relative transition-colors"
           >
             <div
-              id="searchBox"
-              class="flex-1 flex items-center gap-2 bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-xl px-3 py-2 transition-colors"
-            >
-              <svg
-                class="w-4 h-4 text-slate-400 dark:text-dark-muted shrink-0"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <input
-                id="searchInput"
-                type="text"
-                placeholder="Search..."
-                class="bg-transparent text-sm text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-dark-muted focus:outline-none flex-1 w-full"
-              />
-            </div>
+  id="searchBox"
+  class="flex-1 flex items-center gap-2 bg-dark-card border border-dark-border hover:border-indigo-500 focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500/30 rounded-xl px-3 py-2.5 transition-all duration-200"
+>
+  <svg
+    class="w-4 h-4 text-dark-muted shrink-0"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+  </svg>
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="Search city..."
+    class="bg-transparent text-sm text-white placeholder:text-dark-muted focus:outline-none flex-1 w-full tracking-wide"
+  />
+</div>
 
             <button
               id="geo-btn"
@@ -337,21 +301,11 @@
               <i class="fa-solid fa-location-crosshairs"></i>
             </button>
 
-            <button
-              id="fav-toggle-btn"
-              class="p-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-600 dark:text-slate-300 hover:text-red-500 transition-colors cursor-pointer relative"
-            >
-              <i class="fa-regular fa-heart text-base"></i>
-              <span
-                class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
-              ></span>
-            </button>
-
             <div
               class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-xs shrink-0 overflow-hidden"
             >
               <img
-                src="https://api.dicebear.com/7.x/notionists/svg?seed=Asif"
+                src="./assets/Moin.jpg"
                 class="w-full h-full object-cover"
                 onerror="
                   this.style.display = 'none';
@@ -363,9 +317,13 @@
 
           <div
             id="mainWeatherCard"
-            class="m-4 rounded-2xl p-5 bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-slate-800 dark:text-white relative overflow-hidden min-h-[320px] shadow-sm dark:shadow-card transition-all duration-300"
-          >
-            <div id="weatherSkeleton" class="animate-pulse flex flex-col gap-4">
+            class="m-4 main-card-dark  rounded-2xl p-5 bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border text-slate-800 dark:text-white relative overflow-hidden min-h-[320px] shadow-sm dark:shadow-card transition-all duration-300">
+
+              <div class="deco-circle-1"></div>
+  <div class="deco-circle-2"></div>
+
+          
+            <div id="weatherSkeleton" class="animate-pulse  flex flex-col gap-4">
               <div class="flex justify-between">
                 <div
                   class="h-5 w-24 bg-slate-300 dark:bg-slate-700 rounded"
@@ -392,7 +350,7 @@
 
             <div
               id="weatherContent"
-              class="hidden relative z-10 flex flex-col h-full"
+              class="hidden relative z-10  flex flex-col h-full"
             >
               <div class="flex items-center gap-2 mb-2">
                 <button
@@ -465,7 +423,8 @@
 
     <div
       id="toast-container"
-      class="fixed top-5 right-5 z-50 flex flex-col gap-3 w-80"
-    ></div>
+      class="fixed top-5 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-3 w-80 pointer-events-none"
+></div>
+    </div>
   </body>
 </html>
