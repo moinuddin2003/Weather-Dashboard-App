@@ -7,24 +7,21 @@
 
     <script src="./config.js" defer></script>
     <script src="./script.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 
-    <!-- Charj.js CDN Below -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Tailwind CDN Below -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome Icons CDN -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
 
-     <!-- Font Family - fonts.googleapis.com  -->
-      <link
+    <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Applying Custom Tailwind  -->
 
     <script>
       tailwind.config = {
@@ -51,32 +48,22 @@
           },
         },
       };
-   
     </script>
   </head>
-<body id="appBody" class="dark bg-dark-bg min-h-screen">
-    <!-- Toggle Button (fixed, for demo) -->
-    <!-- <div class="fixed top-3 right-3 z-50">
-      <button
-        id="themeToggle"
-        onclick="toggleTheme()"
-        class="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg bg-white/10 hover:bg-white/20 text-white dark:text-white border border-white/20 backdrop-blur"
-      >
-        <span id="themeIcon">☀️</span>
-        <span id="themeLabel">Light Mode</span>
-      </button>
-    </div> -->
-
-    <!-- ===================== APP SHELL ===================== -->
-    <div id="dashboard" class="flex h-screen overflow-hidden">
-      <!-- ===== LEFT SIDEBAR (icon rail) ===== -->
+  <body
+    id="appBody"
+    class="dark bg-dark-bg min-h-screen text-white overflow-x-hidden"
+  >
+    <div
+      id="dashboard"
+      class="flex flex-col lg:flex-row min-h-screen bg-dark-bg"
+    >
       <aside
         id="sidebar"
-        class="w-16 shrink-0 flex flex-col items-center py-6 gap-5 bg-dark-card border-r border-dark-border z-10"
+        class="w-full lg:w-16 shrink-0 flex lg:flex-col items-center justify-between lg:justify-start py-4 lg:py-6 px-4 lg:px-0 gap-5 bg-dark-card border-b lg:border-b-0 lg:border-r border-dark-border"
       >
-        <!-- Logo / Home -->
         <div
-          class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg mb-2"
+          class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg"
         >
           <svg
             class="w-5 h-5 text-white"
@@ -89,7 +76,7 @@
           </svg>
         </div>
 
-        <div class="flex flex-col gap-3 flex-1 items-center">
+        <div class="flex md:flex-col gap-3 items-center">
           <button
             class="sidebar-icon active w-10 h-10 rounded-xl flex items-center justify-center text-purple-400"
           >
@@ -135,40 +122,10 @@
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
             </svg>
           </button>
-          <button
-            class="sidebar-icon w-10 h-10 rounded-xl flex items-center justify-center text-dark-muted hover:text-purple-300"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-          </button>
-          <button
-            class="sidebar-icon w-10 h-10 rounded-xl flex items-center justify-center text-dark-muted hover:text-purple-300"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              viewBox="0 0 24 24"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" />
-              <path d="M16 2v4M8 2v4M3 10h18" />
-            </svg>
-          </button>
         </div>
 
-        <!-- Settings -->
         <button
-          class="sidebar-icon w-10 h-10 rounded-xl flex items-center justify-center text-dark-muted hover:text-purple-300 mt-auto"
+          class="sidebar-icon w-10 h-10 rounded-xl flex items-center justify-center text-dark-muted hover:text-purple-300 md:mt-auto"
         >
           <svg
             class="w-5 h-5"
@@ -185,32 +142,35 @@
         </button>
       </aside>
 
-      <!-- ===== MAIN PANEL ===== -->
-      <div class="flex flex-1 min-w-0 overflow-hidden">
-        <!-- ===== LEFT CONTENT ===== -->
-        <div class="flex-1 flex flex-col overflow-y-auto p-6 gap-5 min-w-0">
-          <!-- TOP: Time, Date, Greeting -->
-          <div class="flex items-start justify-between">
+      <div class="flex-1 flex flex-col xl:flex-row min-w-0">
+        <div class="flex-1 flex flex-col p-4 md:p-6 gap-6 min-w-0">
+          <div class="flex items-start justify-between flex-wrap gap-4">
             <div>
               <p
                 id="currentTime"
-                class="font-display text-5xl font-bold text-white dark-only"
+                class="font-display text-4xl md:text-5xl font-bold text-white"
               >
-                07:32 AM
+                <span
+                  class="inline-block bg-slate-700 h-10 w-44 rounded animate-pulse"
+                ></span>
               </p>
               <p id="currentDate" class="text-dark-muted text-sm mt-1">
-                Wednesday, 14 April, 2021
+                <span
+                  class="inline-block bg-slate-700 h-4 w-32 rounded animate-pulse"
+                ></span>
               </p>
               <p
                 id="greeting"
-                class="text-white text-xl font-semibold mt-3 flex items-center gap-2"
+                class="text-white text-lg md:text-xl font-semibold mt-3 flex items-center gap-2"
               >
-                <span>☀️</span> Good morning!
+                <span
+                  class="inline-block bg-slate-700 h-6 w-48 rounded animate-pulse"
+                ></span>
               </p>
             </div>
-            <!-- Light/Dark pill (decorative, matches design) -->
+
             <div
-              class="flex items-center gap-1 bg-dark-card border border-dark-border rounded-full p-1"
+              class="flex items-center gap-1 bg-dark-card border border-dark-border rounded-full p-1 shadow-md"
             >
               <button
                 class="w-8 h-8 rounded-full flex items-center justify-center text-yellow-400 text-sm"
@@ -225,433 +185,256 @@
             </div>
           </div>
 
-          <!-- WEEKLY FORECAST STRIP -->
-          <div id="forecastStrip" class="flex gap-3 overflow-x-auto pb-1">
-            Sun
+          <div>
+            <h3 class="text-white text-sm font-semibold mb-3">
+              Weekly Forecast
+            </h3>
             <div
-              class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
+              id="forecastStrip"
+              class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin"
             >
-              <span class="text-2xl">⚡</span>
-              <p class="theme-muted text-dark-muted text-xs font-medium">Sun</p>
-              <p class="theme-text text-white font-bold text-sm">28°</p>
-            </div>
-            Mon
-            <div
-              class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
-            >
-              <span class="text-2xl">💧</span>
-              <p class="theme-muted text-dark-muted text-xs font-medium">Mon</p>
-              <p class="theme-text text-white font-bold text-sm">17°</p>
-            </div>
-            Tue
-            <div
-              class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
-            >
-              <span class="text-2xl">⛅</span>
-              <p class="theme-muted text-dark-muted text-xs font-medium">Tue</p>
-              <p class="theme-text text-white font-bold text-sm">20°</p>
-            </div>
-            Wed (selected)
-            <div
-              id="wedCard"
-              class="shrink-0 flex flex-col items-center gap-2 rounded-2xl px-5 py-4 min-w-[90px] forecast-selected-dark shadow-lg"
-            >
-              <span class="text-2xl">⛈️</span>
-              <p class="text-white/80 text-xs font-medium">Wed</p>
-              <p class="text-white font-bold text-sm">29°</p>
-            </div>
-            Thu
-            <div
-              class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
-            >
-              <span class="text-2xl">🌬️</span>
-              <p class="theme-muted text-dark-muted text-xs font-medium">Thu</p>
-              <p class="theme-text text-white font-bold text-sm">22°</p>
-            </div>
-            Fri
-            <div
-              class="theme-card shrink-0 flex flex-col items-center gap-2 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[90px]"
-            >
-              <span class="text-2xl">🌫️</span>
-              <p class="theme-muted text-dark-muted text-xs font-medium">Fri</p>
-              <p class="theme-text text-white font-bold text-sm">16°</p>
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse"
+              >
+                <div class="bg-slate-700 w-8 h-8 rounded-full"></div>
+                <div class="bg-slate-700 w-10 h-3 rounded"></div>
+                <div class="bg-slate-700 w-8 h-4 rounded"></div>
+              </div>
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse"
+              >
+                <div class="bg-slate-700 w-8 h-8 rounded-full"></div>
+                <div class="bg-slate-700 w-10 h-3 rounded"></div>
+                <div class="bg-slate-700 w-8 h-4 rounded"></div>
+              </div>
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse"
+              >
+                <div class="bg-slate-700 w-8 h-8 rounded-full"></div>
+                <div class="bg-slate-700 w-10 h-3 rounded"></div>
+                <div class="bg-slate-700 w-8 h-4 rounded"></div>
+              </div>
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse"
+              >
+                <div class="bg-slate-700 w-8 h-8 rounded-full"></div>
+                <div class="bg-slate-700 w-10 h-3 rounded"></div>
+                <div class="bg-slate-700 w-8 h-4 rounded"></div>
+              </div>
+              <div
+                class="theme-card shrink-0 flex flex-col items-center gap-3 bg-dark-card border border-dark-border rounded-2xl px-5 py-4 min-w-[95px] animate-pulse"
+              >
+                <div class="bg-slate-700 w-8 h-8 rounded-full"></div>
+                <div class="bg-slate-700 w-10 h-3 rounded"></div>
+                <div class="bg-slate-700 w-8 h-4 rounded"></div>
+              </div>
             </div>
           </div>
 
-          <!-- BOTTOM ROW: AQI + Sunrise/Sunset -->
-          <div class="grid grid-cols-2 gap-5 flex-1">
-            <!-- AQI Card -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div
-              class="theme-card bg-dark-card border border-dark-border rounded-2xl p-5 flex flex-col gap-4"
+              class="theme-card bg-dark-card border border-dark-border rounded-2xl p-5 flex flex-col justify-between min-h-[250px]"
             >
-              <div class="flex items-center justify-between">
+              <div class="flex items-center justify-between mb-3">
+                <p class="text-white text-xs font-semibold">Hourly Forecast</p>
+              </div>
+              <div class="relative h-[250px]">
+                <div
+                  id="chartSkeleton"
+                  class="absolute inset-0 animate-pulse bg-slate-700/30 rounded-xl z-10"
+                ></div>
+
+                <canvas id="hourlyChart" class="w-full h-full"></canvas>
+              </div>
+            </div>
+
+            <div
+              class="theme-card bg-dark-card border border-dark-border rounded-2xl p-5 flex flex-col gap-3 max-h-[300px] overflow-y-auto"
+            >
+              <div class="flex items-center justify-between mb-1">
                 <p class="theme-text text-white font-semibold text-sm">
-                  Air Quality Index
+                  Sunrise &amp; Sunset (Favourites)
                 </p>
-                <div class="flex items-center gap-1 text-dark-muted text-xs">
-                  <svg
-                    class="w-3 h-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
-                    />
-                  </svg>
-                  Uttara, Dhaka
-                  <svg
-                    class="w-3 h-3 ml-0.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
               </div>
-
-              <div class="flex items-center gap-3">
-                <div class="text-2xl">💨</div>
-                <div class="flex-1">
-                  <p class="text-green-400 font-bold text-sm">Good</p>
-                  <p class="text-dark-muted text-xs">
-                    A perfect day for a walk!
-                  </p>
-                </div>
-                <button
-                  class="px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-semibold rounded-lg"
-                >
-                  Refresh
-                </button>
-              </div>
-
-              <!-- AQI Pills -->
-              <div class="flex gap-2 flex-wrap">
+              <div id="sunriseSunsetList" class="flex flex-col gap-3">
                 <div
-                  class="flex flex-col items-center gap-1 aqi-pm2 px-3 py-2 rounded-xl min-w-[44px]"
+                  class="flex justify-between items-center bg-dark-card2 p-3 rounded-xl animate-pulse"
                 >
-                  <span class="font-bold text-sm">9.3</span>
-                  <span class="text-xs font-medium">PM2</span>
+                  <div class="bg-slate-700 h-4 w-20 rounded"></div>
+                  <div class="bg-slate-700 h-4 w-28 rounded"></div>
                 </div>
                 <div
-                  class="flex flex-col items-center gap-1 aqi-pm10 px-3 py-2 rounded-xl min-w-[44px]"
+                  class="flex justify-between items-center bg-dark-card2 p-3 rounded-xl animate-pulse"
                 >
-                  <span class="font-bold text-sm">12.2</span>
-                  <span class="text-xs font-medium">PM10</span>
+                  <div class="bg-slate-700 h-4 w-16 rounded"></div>
+                  <div class="bg-slate-700 h-4 w-28 rounded"></div>
                 </div>
-                <div
-                  class="flex flex-col items-center gap-1 aqi-so2 px-3 py-2 rounded-xl min-w-[44px]"
-                >
-                  <span class="font-bold text-sm">4.8</span>
-                  <span class="text-xs font-medium">SO₂</span>
-                </div>
-                <div
-                  class="flex flex-col items-center gap-1 aqi-no2 px-3 py-2 rounded-xl min-w-[44px]"
-                >
-                  <span class="font-bold text-sm">4.6</span>
-                  <span class="text-xs font-medium">NO₂</span>
-                </div>
-                <div
-                  class="flex flex-col items-center gap-1 aqi-o3 px-3 py-2 rounded-xl min-w-[44px]"
-                >
-                  <span class="font-bold text-sm">6.5</span>
-                  <span class="text-xs font-medium">O₃</span>
-                </div>
-                <div
-                  class="flex flex-col items-center gap-1 aqi-co px-3 py-2 rounded-xl min-w-[44px]"
-                >
-                  <span class="font-bold text-sm">0.9</span>
-                  <span class="text-xs font-medium">CO</span>
-                </div>
-              </div>
-
-              <!-- Monthly Rainfall mini chart -->
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <p class="text-white text-xs font-semibold">
-                    Hourly Forecast
-                  </p>
-                  <!-- <div class="flex items-center gap-3 text-xs text-dark-muted">
-                    <span class="flex items-center gap-1"
-                      ><span
-                        class="w-2 h-2 rounded-full bg-indigo-400 inline-block"
-                      ></span
-                      >Rain</span
-                    >
-                    <span class="flex items-center gap-1"
-                      ><span
-                        class="w-2 h-2 rounded-full bg-amber-400 inline-block"
-                      ></span
-                      >Sun</span
-                    >
-                  </div> -->
-                </div>
-                    <canvas id="hourlyChart"></canvas>
               </div>
             </div>
-
-            <!-- Sunrise & Sunset Card -->
-            <div class="theme-card bg-dark-card border border-dark-border rounded-2xl p-5 flex flex-col gap-3 max-h-[400px] overflow-y-auto">
-  <div class="flex items-center justify-between mb-1">
-    <p class="theme-text text-white font-semibold text-sm">
-      Sunrise &amp; Sunset (Favourites)
-    </p>
-  </div>
-
-  <div id="sunriseSunsetList" class="flex flex-col gap-3">
-    </div>
-</div>
           </div>
-          <!-- /grid -->
         </div>
-        <!-- /left content -->
 
-        <!-- ===== RIGHT PANEL ===== -->
         <div
-  id="rightPanel"
-  class="w-80 shrink-0 flex flex-col border-l border-dark-border bg-dark-card2 overflow-y-auto rounded-2xl"
-  
->
- 
-  <!-- ── Search + Icons ── -->
-  <div
-    id="rightPanelHeader"
-    class="flex items-center gap-3 p-4 border-b border-dark-border"
-  >
-    <div
-      id="searchBox"
-      class="flex-1 flex items-center gap-2 bg-dark-card border border-dark-border rounded-xl px-3 py-2"
-    >
-      <svg class="w-4 h-4 text-dark-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-      </svg>
-      <input
-        id="searchInput"
-        type="text"
-        placeholder="Search..."
-        class="bg-transparent text-sm text-white placeholder:text-dark-muted focus:outline-none flex-1 w-full"
-      />
-    </div>
- 
-    <!-- Location icon btn -->
-    <button 
-            id="geo-btn" 
-            title="Use My Location"
-            class="absolute right-32 top-9 -translate-y-1/2 text-slate-400 hover:text-blue-400 transition-colors cursor-pointer"
-          >
-            <i class="fa-solid fa-location-crosshairs"></i>
-          </button>
- 
-    <!-- Bell icon btn -->
-    <button id="fav-toggle-btn" class="p-2.5 bg-slate-800 border border-slate-700 rounded-xl hover:text-red-500 transition-colors cursor-pointer">
-          <i class="fa-regular fa-heart text-base"></i>
-        </button>
-      <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
-    </button>
-
-    
- 
-    <!-- Avatar -->
-    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-xs shrink-0 overflow-hidden">
-      <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Asif" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='AS';" />
-    </div>
-  </div>
- 
-  <!-- ── Main Weather Card (Dhaka) ── -->
-  <div
-    id="mainWeatherCard"
-    class="m-4 rounded-2xl p-5 main-card-dark text-white relative overflow-hidden"
-    style="min-height: 280px;"
-  >
-  <!-- Decorative sun -->
-  <div class="deco-circle-1"></div>
-  <div class="deco-circle-2"></div>
-  
-  <div class="relative z-10 flex flex-col h-full">
-
-      <!-- City name + dropdown -->
-      <div class="flex items-center gap-1 text-white text-sm font-semibold mb-1">
-        <!-- <svg class="w-3.5 h-3.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"/>
-        </svg> -->
-        <button title="Add to Favourites" id="heartBtn" class="text-white/65 hover:text-red-500 transition-colors z-20 text-lg cursor-pointer">
-  <i class="fa-regular fa-heart"></i>
-
-        </button>
-
-        <span id="cardCity" class="font-medium">Dhaka</span>
-        <!-- <svg class="w-3.5 h-3.5 opacity-70 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-        </svg> -->
-      </div>
- 
-      <!-- Big cloud + lightning weather icon (centered) -->
-      <div id="weather-icon" class="flex justify-center my-3">
-        
-      </div>
- 
-      <!-- Date -->
-      <p id="cardDate" class="text-white/75 text-xs text-center mb-3">Today, 14 April</p>
- 
-      <!-- Temperature -->
-      <p id="cardTemp" class="font-display font-bold text-6xl text-center leading-none mb-1">29°</p>
- 
-      <!-- Condition -->
-      <p id="cardCondition" class="text-white/90 font-semibold text-xl text-center mb-5">Sunny</p>
- 
-      <!-- Wind + Humidity row -->
-      <div class="flex flex-col items-center justify-center gap-2 text-sm">
-                  <div class="flex items-center gap-4">
-                    <div class="flex items-center gap-2 text-white/80">
-                      <span>💨</span>
-                      <span>Wind</span>
-                    </div>
-                    <div class="w-px h-4 bg-white/20"></div>
-                    <span id="cardWind" class="font-semibold">19 km/h</span>
-                  </div>
-                  <div class="flex items-center gap-4">
-                    <div class="flex items-center gap-2 text-white/80">
-                      <span>💧</span>
-                      <span>Hum</span>
-                    </div>
-                    <div class="w-px h-4 bg-white/20"></div>
-                    <span id="cardHumidity" class="font-semibold">22 %</span>
-                  </div>
-                </div>
- 
-    </div>
-  </div>
- 
-      <div id="favCity">  
-          <!-- Tokyo Card (pink) -->
+          id="rightPanel"
+          class="w-full lg:w-80 shrink-0 flex flex-col border-t lg:border-t-0 lg:border-l border-dark-border bg-dark-card2 overflow-y-auto p-4 md:p-0"
+        >
           <div
-            class="mx-4 mb-3 rounded-2xl p-4 tokyo-card text-white flex items-center justify-between"
+            id="rightPanelHeader"
+            class="flex items-center gap-3 p-4 border-b border-dark-border relative"
           >
-            <div class="flex flex-col gap-2 text-sm">
-              <div class="flex items-center gap-3">
-                <div class="flex items-center gap-1.5 text-white/80">
-                  <span>💨</span> Wind
-                </div>
-                <div class="w-px h-4 bg-white/30"></div>
-                <span class="font-semibold">15 km/h</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="flex items-center gap-1.5 text-white/80">
-                  <span>💧</span> Hum
-                </div>
-                <div class="w-px h-4 bg-white/30"></div>
-                <span class="font-semibold">28 %</span>
-              </div>
-            </div>
-            <div class="text-right">
-              <div
-                class="flex items-center gap-1 justify-end text-white/80 text-xs mb-1"
+            <div
+              id="searchBox"
+              class="flex-1 flex items-center gap-2 bg-dark-card border border-dark-border rounded-xl px-3 py-2"
+            >
+              <svg
+                class="w-4 h-4 text-dark-muted shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  class="w-3 h-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
-                  />
-                </svg>
-                Tokyo
-                <svg
-                  class="w-3 h-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-              <p class="font-display font-bold text-3xl">26°</p>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <input
+                id="searchInput"
+                type="text"
+                placeholder="Search..."
+                class="bg-transparent text-sm text-white placeholder:text-dark-muted focus:outline-none flex-1 w-full"
+              />
+            </div>
+
+            <button
+              id="geo-btn"
+              title="Use My Location"
+              class="text-slate-400 hover:text-blue-400 transition-colors cursor-pointer text-lg"
+            >
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </button>
+
+            <button
+              id="fav-toggle-btn"
+              class="p-2 bg-slate-800 border border-slate-700 rounded-xl hover:text-red-500 transition-colors cursor-pointer relative"
+            >
+              <i class="fa-regular fa-heart text-base"></i>
+              <span
+                class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
+              ></span>
+            </button>
+
+            <div
+              class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-xs shrink-0 overflow-hidden"
+            >
+              <img
+                src="https://api.dicebear.com/7.x/notionists/svg?seed=Asif"
+                class="w-full h-full object-cover"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentElement.innerHTML = 'AS';
+                "
+              />
             </div>
           </div>
 
-          <!-- NY Card (orange, dashed) -->
           <div
-            class="mx-4 mb-4 rounded-2xl p-4 ny-card text-white flex items-center justify-between border-2 border-dashed border-white/30"
+            id="mainWeatherCard"
+            class="m-4 rounded-2xl p-5 main-card-dark text-white relative overflow-hidden min-h-[320px]"
           >
-               <div class="flex flex-col gap-2 text-sm">
-              <div class="flex items-center gap-3">
-                <div class="flex items-center gap-1.5 text-white/80">
-                  <span>💨</span> Wind
-                </div>
-                <div class="w-px h-4 bg-white/30"></div>
-                <span class="font-semibold">17 km/h</span>
+            <!-- Skeleton -->
+            <div id="weatherSkeleton" class="animate-pulse flex flex-col gap-4">
+              <div class="flex justify-between">
+                <div class="h-5 w-24 bg-slate-700 rounded"></div>
+                <div class="h-5 w-5 bg-slate-700 rounded-full"></div>
               </div>
-              <div class="flex items-center gap-3">
-                <div class="flex items-center gap-1.5 text-white/80">
-                  <span>💧</span> Hum
-                </div>
-                <div class="w-px h-4 bg-white/30"></div>
-                <span class="font-semibold">25 %</span>
+
+              <div class="flex justify-center">
+                <div class="h-20 w-20 bg-slate-700 rounded-full"></div>
+              </div>
+
+              <div class="h-4 w-32 bg-slate-700 rounded mx-auto"></div>
+              <div class="h-12 w-24 bg-slate-700 rounded mx-auto"></div>
+              <div class="h-5 w-20 bg-slate-700 rounded mx-auto"></div>
+
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div class="h-10 bg-slate-700 rounded"></div>
+                <div class="h-10 bg-slate-700 rounded"></div>
               </div>
             </div>
-            <div class="text-right">
-              <div
-                class="flex items-center gap-1 justify-end text-white/80 text-xs mb-1"
-              >
-                <svg
-                  class="w-3 h-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+
+            <!-- Actual Content -->
+            <div
+              id="weatherContent"
+              class="hidden relative z-10 flex flex-col h-full"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                <button
+                  title="Add to Favourites"
+                  id="heartBtn"
+                  class="text-white/65 hover:text-red-500 transition-colors text-lg"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
-                  />
-                </svg>
-                NY
-                <svg
-                  class="w-3 h-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+
+                <span id="cardCity" class="font-medium text-sm"></span>
               </div>
-              <p class="font-display font-bold text-3xl">31°</p>
+
+              <div id="weather-icon" class="flex justify-center my-3"></div>
+
+              <p
+                id="cardDate"
+                class="text-white/75 text-xs text-center mb-3"
+              ></p>
+
+              <p
+                id="cardTemp"
+                class="font-display font-bold text-5xl md:text-6xl text-center"
+              ></p>
+
+              <p
+                id="cardCondition"
+                class="text-center text-lg md:text-xl font-semibold mb-5"
+              ></p>
+
+              <div
+                class="flex flex-col items-center justify-center gap-3 text-sm"
+              >
+                <div class="flex items-center gap-3">
+                  <span>💨 Wind</span>
+                  <span id="cardWind"></span>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <span>💧 Hum</span>
+                  <span id="cardHumidity"></span>
+                </div>
+              </div>
             </div>
           </div>
-      </div>
 
+          <div id="favCity" class="space-y-3">
+            <div
+              class="mx-4 mb-3 rounded-2xl p-4 bg-dark-card border border-dark-border animate-pulse"
+            >
+              <div class="flex justify-between">
+                <div>
+                  <div class="h-3 w-20 bg-slate-700 rounded mb-2"></div>
+                  <div class="h-3 w-16 bg-slate-700 rounded"></div>
+                </div>
+
+                <div class="h-8 w-12 bg-slate-700 rounded"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- /right panel -->
       </div>
-      <!-- /main panel -->
     </div>
-    <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 w-80">
-  </div>
+
+    <div
+      id="toast-container"
+      class="fixed top-5 right-5 z-50 flex flex-col gap-3 w-80"
+    ></div>
   </body>
-</html>
 </html>

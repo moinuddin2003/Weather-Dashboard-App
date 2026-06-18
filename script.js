@@ -76,6 +76,11 @@ async function fetchWeatherData(city) {
     document.getElementById("cardHumidity").innerText =
       weatherData.current.humidity + " %";
 
+    document.getElementById("weatherSkeleton")?.classList.add("hidden");
+
+    document.getElementById("weatherContent")?.classList.remove("hidden");
+
+    document.getElementById("chartSkeleton")?.classList.add("hidden");
     const weeklyForecast = document.getElementById("forecastStrip");
     weeklyForecast.innerHTML = "";
 
@@ -88,8 +93,8 @@ async function fetchWeatherData(city) {
             >
             <img src="https:${eachDay.day.condition.icon}" alt="weather icon" class="w-8 h-8">
               <p class="theme-muted text-dark-muted text-xs font-medium">${eachDay.date}</p>
-              <p class="theme-text text-white font-bold text-sm">MAX: ${eachDay.day.maxtemp_c}</p>
-              <p class="theme-text text-white font-bold text-sm">MIN: ${eachDay.day.mintemp_c}</p>
+              <p class="theme-text theme-text text-white font-bold text-sm">MAX: ${eachDay.day.maxtemp_c}</p>
+              <p class="theme-text theme-text text-white font-bold text-sm">MIN: ${eachDay.day.mintemp_c}</p>
             </div>
       `;
 
@@ -225,7 +230,7 @@ async function displayFavourites() {
     //   const data = await response.json();
 
     const cardHTML = `
-      <div onclick="fetchWeatherData('${city}')" class="mx-4 mb-3 rounded-2xl p-4 tokyo-card text-white flex items-center justify-between cursor-pointer">
+      <div onclick="fetchWeatherData('${city}')" class="mx-4 mb-3 rounded-2xl p-4 tokyo-card theme-text text-white flex items-center justify-between cursor-pointer">
           <div class="flex flex-col gap-2 text-sm">
             <div class="flex items-center gap-3">
               <span>💨 Wind</span>
@@ -254,10 +259,10 @@ async function displayFavourites() {
 
 function showToast(title, description, icon, type) {
   const typeClasses = {
-    success: "bg-green-600 border-green-700 text-white",
-    error: "bg-red-600 border-red-700 text-white",
-    info: "bg-blue-600 border-blue-700 text-white",
-    warning: "bg-amber-500 border-amber-600 text-white",
+    success: "bg-green-600 border-green-700 theme-text text-white",
+    error: "bg-red-600 border-red-700 theme-text text-white",
+    info: "bg-blue-600 border-blue-700 theme-text text-white",
+    warning: "bg-amber-500 border-amber-600 theme-text text-white",
   };
 
   let toastDiv = document.createElement("div");
@@ -310,7 +315,7 @@ async function displaySunriseSunset() {
         const expandedHTML = `
           <div class="theme-card2 bg-dark-card2 border border-dark-border rounded-xl p-4 cursor-pointer hover:border-indigo-500 transition-colors" onclick="fetchWeatherData('${city}')">
             <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-1.5 text-white text-sm font-medium">
+              <div class="flex items-center gap-1.5 theme-text text-white text-sm font-medium">
                 <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
                 </svg>
@@ -322,7 +327,7 @@ async function displaySunriseSunset() {
                 <span class="text-xl">☀️</span>
                 <div>
                   <p class="text-dark-muted text-xs">Sunrise</p>
-                  <p class="text-white font-semibold text-sm">${sunrise}</p>
+                  <p class="theme-text text-white font-semibold text-sm">${sunrise}</p>
                 </div>
               </div>
               <div class="flex-1 h-px bg-dark-border"></div>
@@ -330,7 +335,7 @@ async function displaySunriseSunset() {
                 <span class="text-xl">🌙</span>
                 <div>
                   <p class="text-dark-muted text-xs">Sunset</p>
-                  <p class="text-white font-semibold text-sm">${sunset}</p>
+                  <p class="theme-text text-white font-semibold text-sm">${sunset}</p>
                 </div>
               </div>
             </div>
@@ -362,3 +367,34 @@ async function displaySunriseSunset() {
     }
   }
 }
+
+function updateDateTime() {
+  const now = new Date();
+
+  document.getElementById("currentTime").innerText = now.toLocaleTimeString();
+
+  document.getElementById("currentDate").innerText = now.toDateString();
+
+  document.getElementById("greeting").innerHTML = "☀️ Good Morning!";
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+
+// Load saved theme on startup
+if (localStorage.getItem("theme") === "dark") {
+  document.documentElement.classList.add("dark");
+} else {
+  document.documentElement.classList.remove("dark");
+}
+
+lightBtn.addEventListener("click", () => {
+  document.documentElement.classList.remove("dark");
+  localStorage.setItem("theme", "light");
+});
+
+darkBtn.addEventListener("click", () => {
+  document.documentElement.classList.add("dark");
+  localStorage.setItem("theme", "dark");
+});
